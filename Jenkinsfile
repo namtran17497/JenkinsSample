@@ -13,7 +13,8 @@ pipeline {
 //	}
     stage ('Upload To Fabric') {
 	    steps {
-	    	sh 'sudo chmod +x ./gradlew clean build assembleDebug crashlyticsUploadDistributionDebug'
+		sh 'chmod +x gradlew'
+	    	sh './gradlew clean build assembleDebug crashlyticsUploadDistributionDebug'
 	    }	
     }
   }
