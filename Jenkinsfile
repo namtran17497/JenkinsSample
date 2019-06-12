@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  tools {
+        jdk 'jdk8' 
+  }
   stages {
 //    stage ('Analysis') {
 //	    steps{
@@ -12,8 +15,8 @@ pipeline {
 //	    }   
 //	}
     stage ('Upload To Fabric') {
-	    steps {
-	    	sh './gradlew clean assembleDebug crashlyticsUploadDistributionDebug -PBUILD_NUMBER=${env.BUILD_NUMBER}'
+	    step {
+	    	sh './gradlew clean build assembleDebug crashlyticsUploadDistributionDebug'
 	    }	
     }
   }
