@@ -17,6 +17,12 @@ pipeline {
 	    	sh './gradlew clean build assembleDebug crashlyticsUploadDistributionDebug'
 	    }	
     }
+    stage('Test') {
+            steps {
+                bat 'mvn test'
+                findbugs canComputeNew: false, defaultEncoding: '', excludePattern: '', healthy: '', includePattern: '', pattern: '**/target/findbugsXml.xml', unHealthy: ''
+  	    }
+    }
   }
 }
 
