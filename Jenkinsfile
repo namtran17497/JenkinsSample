@@ -13,7 +13,7 @@ pipeline {
 //	}
     stage ('Upload To Fabric') {
 	    steps {
-	    	sh 'bash ./gradlew clean build assembleDebug crashlyticsUploadDistributionDebug'
+	    	sh './gradlew clean build assembleDebug crashlyticsUploadDistributionDebug'
 	    }	
     }
   }
