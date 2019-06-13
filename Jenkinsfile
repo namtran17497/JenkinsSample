@@ -17,6 +17,11 @@ pipeline {
 	    	sh './gradlew clean build assembleDebug crashlyticsUploadDistributionDebug'
 	    }	
     }
+    stage ('Find bugs') {
+	    steps {
+		findbugs canComputeNew: false, defaultEncoding: '', excludePattern: '', healthy: '', includePattern: '', pattern: '', unHealthy: ''
+	    }	
+    }
   }
 }
 
