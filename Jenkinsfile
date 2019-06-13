@@ -11,15 +11,15 @@ pipeline {
 //	        publishIssues issues:[findbugs]
 //	    }   
 //	}
+    stage ('Find bugs') {
+	    steps {
+		findbugs canComputeNew: false, defaultEncoding: '', excludePattern: '', healthy: '', includePattern: '', pattern: '', unHealthy: ''
+	    }	
+    }
     stage ('Upload To Fabric') {
 	    steps {
 		sh 'chmod +x gradlew'
 	    	sh './gradlew clean build assembleDebug crashlyticsUploadDistributionDebug'
-	    }	
-    }
-    stage ('Find bugs') {
-	    steps {
-		findbugs canComputeNew: false, defaultEncoding: '', excludePattern: '', healthy: '', includePattern: '', pattern: '', unHealthy: ''
 	    }	
     }
   }
