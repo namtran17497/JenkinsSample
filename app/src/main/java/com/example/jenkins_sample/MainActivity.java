@@ -6,7 +6,6 @@ import com.crashlytics.android.Crashlytics;
 import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends AppCompatActivity {
-    public String name = abc";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
