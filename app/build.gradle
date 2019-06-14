@@ -24,11 +24,11 @@ task customFindbugs(type: FindBugs) {
     classpath = files()
 
     reports {
-        xml.enabled = false
+        xml.enabled = true
         xml.withMessages = true
         html.enabled = !xml.isEnabled()
-        xml.destination "$project.buildDir/outputs/findbugs/findbugs-output.xml"
-        html.destination "$project.buildDir/outputs/findbugs/findbugs-output.html"
+        xml.destination "$project.buildDir/findbugs.xml"
+        html.destination "$project.buildDir/findbugs.html"
     }
 }
 
