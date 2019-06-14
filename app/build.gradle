@@ -15,7 +15,7 @@ task customFindbugs(type: FindBugs) {
     ignoreFailures = false
     effort = "max"
     reportLevel = "low"
-    classes = files("$project.buildDir/src/main/java")
+    classes = files("$project.buildDir/src/main/java/com/example/jenkins_sample")
 
     source = fileTree('src/main/java/')
     classpath = files()
