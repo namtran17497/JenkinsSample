@@ -17,9 +17,6 @@ task customFindbugs(type: FindBugs) {
     reportLevel = "low"
     classes = files("$project.buildDir/intermediates/classes")
 
-    // Use this only if you want exclude some errors
-    excludeFilter = file("$rootProject.rootDir/config/findbugs/exclude.xml")
-
     source = fileTree('src/main/java/')
     classpath = files()
 
