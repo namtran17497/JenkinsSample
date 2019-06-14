@@ -29,7 +29,7 @@ task customFindbugs(type: FindBugs) {
     }
 }
 
-build.dependsOn customFindbugs
+//build.dependsOn customFindbugs
 
 repositories {
     maven { url 'https://maven.fabric.io/public' }
