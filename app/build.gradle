@@ -9,6 +9,23 @@ buildscript {
 }
 apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
+apply plugin: 'findbugs'
+
+task findbugs(type: FindBugs) {
+    description 'Run findbugs'
+    group 'verification'
+    classes = files("$project.buildDir/intermediates/classes")
+    source 'src'
+    classpath = files()
+    effort 'max'
+    reportLevel = "high"
+    excludeFilter file('./findbugs-exclude.xml')
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+    ignoreFailures = false
+}
 
 repositories {
     maven { url 'https://maven.fabric.io/public' }
