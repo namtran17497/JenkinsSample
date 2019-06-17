@@ -12,8 +12,7 @@ pipeline {
 		findbugs canComputeNew: false, defaultEncoding: '', excludePattern: '', healthy: '', includePattern: '', pattern: '', unHealthy: ''
 	  }	
   }
-  stages {
-    stage('SonarQube analysis') {
+  stage('SonarQube analysis') {
       steps {
 		script {
   			// requires SonarQube Scanner 2.8+
@@ -23,6 +22,5 @@ pipeline {
   			sh './gradlew --info sonarqube'
 		}
       }
-    }
   }
 }
