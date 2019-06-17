@@ -6,12 +6,18 @@ pipeline {
 			findbugs canComputeNew: false, defaultEncoding: '', excludePattern: '', healthy: '', includePattern: '', pattern: '', unHealthy: ''
 	  	}	
   	}
-  	stage ('SonarQube analysis') {
-      	steps {
-			withSonarQubeEnv('sonarqube1') {
-  				sh 'bash ./gradlew --info sonarqube'
-			}
-      	}
+  	stage ('SonarQube Analysis') {
+      	environment {
+        	scannerHome = tool 'sonarqubeScanner'
+	    }
+	    steps {
+	        withSonarQubeEnv('sonarqube1') {
+	            sh "${scannerHome}/bin/sonar-scanner"
+	        }
+	        timeout(time: 10, unit: 'MINUTES') {
+	            waitForQualityGate abortPipeline: true
+	        }
+	    }
   	}
     stage ('Upload To Fabric') {
 	    steps {
