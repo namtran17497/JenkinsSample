@@ -17,8 +17,8 @@ pipeline {
 	    }
   	}
   	stage ('Coverity Analysis')	{
+  		iDir = 'cov-idir'
   		steps {
-  			iDir = 'cov-idir'
   			withCoverityEnv(coverityToolName: 'default', hostVariable: '', passwordVariable: '', portVariable: '', usernameVariable: '') {
     			// run cov-build capture command
 			    sh "cov-build --dir ${iDir} <build-command>"
