@@ -17,17 +17,13 @@ pipeline {
 	    }
   	}
   	stage ('Coverity Analysis')	{
-  		iDir = 'cov-idir'
   		steps {
   			withCoverityEnv(coverityToolName: 'default', hostVariable: '', passwordVariable: '', portVariable: '', usernameVariable: '') {
     			// run cov-build capture command
-			    sh "cov-build --dir ${iDir} <build-command>"
+			    sh "cov-build --dir cov-idir <build command>"
 			  
 			    // run cov-analyze command
-			    sh "cov-analyze --dir ${iDir}"
-
-			    // run cov-commit-defects command
-			    sh "cov-commit-defects --dir ${iDir} --host ${COVERITY_HOST} --port ${COVERITY_PORT} --stream my stream"
+			    sh "cov-analyze --dir cov-idir"
 			}
   		}
   	}
