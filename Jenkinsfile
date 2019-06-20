@@ -16,6 +16,17 @@ pipeline {
 	        }
 	    }
   	}
+  	stage ('Coverity Analysis')	{
+  		steps {
+  			withCoverityEnv(coverityToolName: 'default', hostVariable: '', passwordVariable: '', portVariable: '', usernameVariable: '') {
+    			// run cov-build capture command
+			    sh "cov-build --dir cov-idir <build command>"
+			  
+			    // run cov-analyze command
+			    sh "cov-analyze --dir cov-idir"
+			}
+  		}
+  	}
     stage ('Upload To Fabric') {
 	    steps {
 	    	sh 'bash ./gradlew clean build assembleDebug'
