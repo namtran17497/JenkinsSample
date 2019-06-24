@@ -18,6 +18,7 @@ pipeline {
   	}
   	stage ('Coverity Analysis')	{
   		steps {
+			sh '#!/bin/bash'
   			withCoverityEnv(coverityToolName: 'default', hostVariable: '', passwordVariable: '', portVariable: '', usernameVariable: '') {
     			// run cov-build capture command
 			    sh "cov-build --dir cov-idir <build command>"
