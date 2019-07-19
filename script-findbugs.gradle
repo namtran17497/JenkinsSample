@@ -1,0 +1,13 @@
+apply plugin: 'findbugs'
+
+task findbugs(type: FindBugs) {
+    classes = fileTree("$project.buildDir/intermediates/javac/debug")
+    source = fileTree("$project.rootDir/src/main/java/com/example/jenkins_sample/")
+    classpath = files()
+
+    reports {
+        xml.enabled = true
+        html.enabled = false
+        xml.destination = "$project.buildDir/outputs/findbugs.xml"
+    }
+}
