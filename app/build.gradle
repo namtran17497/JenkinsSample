@@ -21,9 +21,9 @@ task findbugs(type: FindBugs) {
     classpath = files()
 
     reports {
-        xml.enabled = false
-        xml.withMessages = false
-        html.enabled = true
+        xml.enabled = true
+        xml.withMessages = true
+        html.enabled = false
         xml.destination "$project.buildDir/findbugs.xml"
         html.destination "$project.buildDir/findbugs.html"
     }
