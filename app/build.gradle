@@ -23,7 +23,7 @@ task findbugs(type: FindBugs) {
     reports {
         xml.enabled = true
         xml.withMessages = true
-        html.enabled = false
+        html.enabled = true
         xml.destination "$project.buildDir/findbugs.xml"
         html.destination "$project.buildDir/findbugs.html"
     }
