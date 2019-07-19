@@ -11,7 +11,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
 apply plugin: 'findbugs'
 
-task customFindbugs(type: FindBugs) {
+task findbugs(type: FindBugs) {
     ignoreFailures = false
     effort = "max"
     reportLevel = "low"
@@ -23,7 +23,7 @@ task customFindbugs(type: FindBugs) {
     reports {
         xml.enabled = true
         xml.withMessages = true
-        html.enabled = !xml.isEnabled()
+        html.enabled = false
         xml.destination "$project.buildDir/findbugs.xml"
         html.destination "$project.buildDir/findbugs.html"
     }
