@@ -12,7 +12,7 @@ apply plugin: 'io.fabric'
 apply plugin: 'findbugs'
 
 task findbugs(type: FindBugs) {
-    ignoreFailures = false
+    ignoreFailures = true
     effort = "max"
     reportLevel = "low"
     classes = files("$project.buildDir/intermediates/javac")
